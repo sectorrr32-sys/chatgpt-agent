@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090c">
+<title>SECTOR 32 — Race • Drift • Battle • Play</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--b:#08090c;
+--p:#12151b;
+--l:#2b3039;
+--t:#f5f6f7;
+--m:#9ca3ad;
+--a:#ff3b19;
+--g:#25d366
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+background:var(--b);
+color:var(--t);
+font-family:Inter,Arial,sans-serif
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.4;
+background:repeating-linear-gradient(
+135deg,
+transparent 0 24px,
+#fff1 25px 26px
+);
+z-index:-1
+}
+
+.wrap{
+width:min(1180px,calc(100% - 28px));
+margin:auto
+}
+
+.top{
+position:fixed;
+z-index:20;
+top:0;
+left:0;
+right:0;
+background:#08090cdd;
+backdrop-filter:blur(14px);
+border-bottom:1px solid #ffffff12
+}
+
+nav{
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.brand{
+font:900 31px 'Barlow Condensed';
+letter-spacing:2px;
+color:#fff;
+text-decoration:none
+}
+
+.brand span,.red{
+color:var(--a)
+}
+
+button,.btn{
+cursor:pointer
+}
+
+.hamb{
+width:46px;
+height:46px;
+border:1px solid #454a54;
+border-radius:11px;
+background:#11141a;
+display:grid;
+place-items:center
+}
+
+.hamb i,.hamb i:before,.hamb i:after{
+content:"";
+display:block;
+width:21px;
+height:2px;
+background:#fff;
+position:relative
+}
+
+.hamb i:before{
+position:absolute;
+top:-7px
+}
+
+.hamb i:after{
+position:absolute;
+top:7px
+}
+
+.menu{
+position:fixed;
+right:14px;
+top:82px;
+width:300px;
+padding:10px;
+background:#0e1015;
+border:1px solid #333842;
+border-radius:15px;
+box-shadow:0 20px 70px #000b;
+opacity:0;
+pointer-events:none;
+transform:translateY(-12px);
+transition:.2s
+}
+
+.menu.open{
+opacity:1;
+pointer-events:auto;
+transform:none
+}
+
+.menu a{
+display:block;
+padding:15px;
+color:#fff;
+text-decoration:none;
+font-weight:800;
+border-radius:9px
+}
+
+.menu a:hover{
+background:#1b1e24;
+color:#ff6948
+}
+
+.hero{
+min-height:760px;
+padding-top:72px;
+display:flex;
+align-items:center;
+background:
+linear-gradient(90deg,#08090cf5 8%,#08090caa 52%,#08090c22),
+url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1800&q=85')
+center/cover
+}
+
+.ey{
+font-size:12px;
+letter-spacing:3px;
+color:#ff6948;
+font-weight:800
+}
+
+.hero h1{
+font:900 clamp(80px,14vw,165px)/.8 'Barlow Condensed';
+letter-spacing:-3px;
+margin:18px 0
+}
+
+.tag{
+font:700 clamp(21px,3vw,38px) 'Barlow Condensed';
+letter-spacing:4px
+}
+
+.lead{
+max-width:620px;
+color:#c4c8ce;
+line-height:1.7
+}
+
+.actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:25px
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:14px 20px;
+border-radius:10px;
+border:1px solid #3b404a;
+color:#fff;
+text-decoration:none;
+font-weight:800
+}
+
+.primary{
+background:var(--a);
+border-color:var(--a)
+}
+
+.ghost:hover{
+background:#171a20
+}
+
+.section{
+padding:85px 0
+}
+
+.alt{
+background:#0b0d11;
+border-block:1px solid #191c22
+}
+
+.head{
+display:flex;
+justify-content:space-between;
+gap:25px;
+align-items:end;
+margin-bottom:30px
+}
+
+.k{
+font-size:12px;
+letter-spacing:2px;
+color:#ff6948;
+font-weight:800
+}
+
+.title{
+font:800 56px/.9 'Barlow Condensed';
+text-transform:uppercase;
+margin:8px 0
+}
+
+.sub{
+color:var(--m);
+line-height:1.65;
+max-width:600px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
+}
+
+.card,.box{
+background:linear-gradient(145deg,#171a20,#0f1116);
+border:1px solid var(--l);
+border-radius:16px;
+padding:24px
+}
+
+.card{
+min-height:175px
+}
+
+.card h3{
+font:800 29px 'Barlow Condensed';
+text-transform:uppercase;
+margin:16px 0 7px
+}
+
+.card p{
+color:var(--m);
+line-height:1.55;
+margin:0
+}
+
+.num{
+color:#ff6948;
+font:700 17px 'Barlow Condensed'
+}
+
+.price{
+font:800 34px 'Barlow Condensed';
+margin-top:17px
+}
+
+.hours{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.day{
+display:flex;
+justify-content:space-between;
+gap:15px;
+padding:18px;
+background:#12151a;
+border:1px solid var(--l);
+border-radius:11px
+}
+
+.day span{
+color:#ffad8e;
+font-weight:700
+}
+
+.why,.loc{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:18px
+}
+
+.list{
+display:grid;
+gap:11px
+}
+
+.item{
+padding:17px;
+border:1px solid var(--l);
+border-radius:11px;
+background:#111318
+}
+
+.item span{
+display:block;
+color:var(--m);
+font-size:14px;
+margin-top:5px
+}
+
+.map{
+min-height:350px;
+border-radius:17px;
+border:1px solid var(--l);
+background:
+linear-gradient(#08090cb5,#08090cb5),
+url('https://images.unsplash.com/photo-1524666041070-9b8767b638ec?auto=format&fit=crop&w=1200&q=75')
+center/cover;
+display:grid;
+place-items:center;
+font:800 43px 'Barlow Condensed';
+letter-spacing:2px
+}
+
+.contactline{
+padding:15px 0;
+border-bottom:1px solid #252932
+}
+
+.contactline:last-child{
+border:0
+}
+
+.contactline small{
+display:block;
+color:#858c96;
+margin-bottom:6px
+}
+
+.contactline a{
+color:#fff;
+text-decoration:none;
+font-size:18px;
+font-weight:700
+}
+
+.form{
+max-width:850px;
+margin:auto
+}
+
+.fields{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:13px
+}
+
+.field{
+display:grid;
+gap:7px
+}
+
+.full{
+grid-column:1/-1
+}
+
+.field label{
+font-size:12px;
+color:#a5abb4;
+font-weight:700
+}
+
+.field input,
+.field select,
+.field textarea{
+width:100%;
+padding:14px;
+border:1px solid #30353e;
+border-radius:10px;
+background:#0d1015;
+color:#fff;
+font:inherit
+}
+
+.field textarea{
+min-height:100px
+}
+
+.success{
+display:none;
+padding:17px;
+background:#102018;
+border:1px solid #3d5147;
+border-radius:11px;
+color:#b9e8ca;
+font-weight:700;
+margin-bottom:15px
+}
+
+.success.show{
+display:block
+}
+
+.wa{
+position:fixed;
+z-index:15;
+right:15px;
+bottom:15px;
+padding:13px 17px;
+background:var(--g);
+color:#061b0d;
+border-radius:99px;
+text-decoration:none;
+font-weight:900;
+box-shadow:0 12px 35px #0009
+}
+
+footer{
+padding:40px 0;
+border-top:1px solid #252932;
+color:#858c96
+}
+
+.foot{
+display:flex;
+justify-content:space-between;
+gap:20px;
+flex-wrap:wrap
+}
+
+@media(max-width:800px){
+.grid{
+grid-template-columns:1fr 1fr
+}
+
+.why,.loc{
+grid-template-columns:1fr
+}
+
+.hours{
+grid-template-columns:1fr
+}
+
+.title{
+font-size:48px
+}
+}
+
+@media(max-width:560px){
+.grid,.fields{
+grid-template-columns:1fr
+}
+
+.full{
+grid-column:auto
+}
+
+.hero{
+min-height:690px
+}
+
+.hero h1{
+font-size:82px
+}
+
+.tag{
+font-size:21px;
+letter-spacing:2px
+}
+
+.section{
+padding:68px 0
+}
+
+.menu{
+width:calc(100% - 28px)
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+<nav class="wrap">
+<a class="brand" href="#home">SECTOR <span>32</span></a>
+
+<button class="hamb" onclick="toggleMenu()" aria-label="Menu">
+<i></i>
+</button>
+</nav>
+
+<div class="menu" id="menu">
+<a href="#home">01 — HOME</a>
+<a href="#activities">02 — ACTIVITIES</a>
+<a href="#prices">03 — PRICES</a>
+<a href="#hours">04 — OPENING HOURS</a>
+<a href="#location">05 — LOCATION</a>
+<a href="#contact">06 — CONTACT</a>
+<a href="#book">07 — BOOK NOW</a>
+</div>
+</header>
+
+<main id="home">
+
+<section class="hero">
+<div class="wrap">
+
+<div class="ey">LAHORE'S OUTDOOR FAMILY ACTIVITY ARENA</div>
+
+<h1>
+SECTOR <span class="red">32</span>
+</h1>
+
+<div class="tag">
+RACE • BATTLE • PLAY
+</div>
+
+<p class="lead">
+A high-energy outdoor arena built for FR Off-Road Survival Racing, drag battles, kids' racing, soft-ball action and unforgettable group experiences.
+</p>
+
+<div class="actions">
+<a class="btn primary" href="#book">BOOK NOW →</a>
+<a class="btn ghost" href="#activities">VIEW ACTIVITIES</a>
+</div>
+
+</div>
+</section>
+
+
+<section class="section">
+
+<div class="wrap">
+
+<div class="head">
+<div>
+<div class="k">THE ARENA</div>
+<h2 class="title">Pick your battle</h2>
+</div>
+
+<p class="sub">
+Premium-feeling entertainment for kids, teens, young adults and families.
+</p>
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+<div class="num">01</div>
+<h3>FR Off-Road Survival Racing</h3>
+<p>Take on the track and test your driving skills.</p>
+</div>
+
+<div class="card">
+<div class="num">02</div>
+<h3>Drag Racing</h3>
+<p>Quick launches and head-to-head runs.</p>
+</div>
+
+<div class="card">
+<div class="num">03</div>
+<h3>Orbeez / Soft-Ball Battle</h3>
+<p>Fast-paced family-friendly team action.</p>
+</div>
+
+<div class="card">
+<div class="num">04</div>
+<h3>Birthday Events</h3>
+<p>Make birthdays an arena day.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section alt" id="activities">
+
+<div class="wrap">
+
+<div class="head">
+<div>
+<div class="k">ACTIVITIES</div>
+<h2 class="title">Full throttle lineup</h2>
+</div>
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+<h3>FR Off-Road Survival Racing</h3>
+<p>Race-ready off-road survival sessions.</p>
+</div>
+
+<div class="card">
+<h3>RC Drag Racing</h3>
+<p>Three-run sprint format.</p>
+</div>
+
+<div class="card">
+<h3>Orbeez / Soft-Ball Shooting</h3>
+<p>Team battles and movement.</p>
+</div>
+
+<div class="card">
+<h3>Kids Racing</h3>
+<p>Easy-to-understand racing for younger drivers.</p>
+</div>
+
+<div class="card">
+<h3>Group Challenges</h3>
+<p>Friendly competitions with your group.</p>
+</div>
+
+<div class="card">
+<h3>Birthday Parties & Private Events</h3>
+<p>Customized packages available.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section" id="prices">
+
+<div class="wrap">
+
+<div class="head">
+<div>
+<div class="k">PRICES</div>
+<h2 class="title">Choose your session</h2>
+</div>
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+<h3>Kids Basic</h3>
+<p>10 minutes</p>
+<div class="price">Rs 300</div>
+</div>
+
+<div class="card">
+<h3>Normal Racing</h3>
+<p>20 minutes</p>
+<div class="price">Rs 400</div>
+</div>
+
+<div class="card">
+<h3>Pro Racing</h3>
+<p>30 minutes</p>
+<div class="price">Rs 600</div>
+</div>
+
+<div class="card">
+<h3>RC Drag Race</h3>
+<p>3 runs</p>
+<div class="price">Rs 300</div>
+</div>
+
+<div class="card">
+<h3>All-Day Pass</h3>
+<p>Multiple sessions</p>
+<div class="price">Rs 3,000</div>
+</div>
+
+<div class="card">
+<h3>Birthday & Private</h3>
+<p>Customized packages</p>
+<div class="price">Contact us</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section alt" id="hours">
+
+<div class="wrap">
+
+<div class="head">
+<div>
+<div class="k">OPENING HOURS</div>
+<h2 class="title">When we're on track</h2>
+</div>
+</div>
+
+<div class="hours">
+
+<div class="day">
+<b>Monday–Thursday</b>
+<span>4:00 PM – 10:00 PM</span>
+</div>
+
+<div class="day">
+<b>Friday</b>
+<span>4:00 PM – 11:00 PM</span>
+</div>
+
+<div class="day">
+<b>Saturday–Sunday</b>
+<span>2:00 PM – 11:00 PM</span>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section">
+
+<div class="wrap why">
+
+<div class="box">
+
+<div class="k">WHY SECTOR 32?</div>
+
+<h2 class="title">More than a race</h2>
+
+<p class="sub">
+A modern outdoor entertainment arena where families and groups can compete, play and make memories together.
+</p>
+
+<a class="btn primary" href="#book">
+PLAN YOUR VISIT
+</a>
+
+</div>
+
+
+<div class="list">
+
+<div class="item">
+<b>Family-friendly entertainment</b>
+<span>Energetic group fun for families.</span>
+</div>
+
+<div class="item">
+<b>Multiple activities</b>
+<span>Race, drag, battle and challenge.</span>
+</div>
+
+<div class="item">
+<b>Competitive racing</b>
+<span>Bring friends and chase the win.</span>
+</div>
+
+<div class="item">
+<b>Birthday events</b>
+<span>Custom experiences for celebrations.</span>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section alt" id="location">
+
+<div class="wrap">
+
+<div class="head">
+<div>
+<div class="k">LOCATION</div>
+<h2 class="title">Find the arena</h2>
+</div>
+</div>
+
+
+<div class="loc">
+
+<div class="map">
+GOOGLE MAPS
+</div>
+
+<div class="box">
+
+<div class="contactline">
+
+<small>LOCATION DETAILS</small>
+
+<a target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=JC2H%2BG9H%20TSD%20Farm%20House%2C%20Service%20Rd%2C%20Wahga%20Town%2C%20Lahore">
+
+JC2H+G9H TSD Farm House,<br>
+Service Rd, Wahga Town, Lahore
+
+</a>
+
+</div>
+
+<p class="sub">
+Exact Google Maps pin can be updated later.
+</p>
+
+<a class="btn primary"
+target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=JC2H%2BG9H%20TSD%20Farm%20House%2C%20Service%20Rd%2C%20Wahga%20Town%2C%20Lahore">
+
+GET DIRECTIONS →
+
+</a>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="section" id="contact">
+
+<div class="wrap">
+
+<div class="head">
+<div>
+<div class="k">CONTACT</div>
+<h2 class="title">Talk to the team</h2>
+</div>
+</div>
+
+
+<div class="loc">
+
+<div class="box">
+
+<div class="contactline">
+
+<small>PHONE</small>
+
+<a href="tel:+923287000988">
+03287000988
+</a>
+
+<br>
+
+<a href="tel:+923244707180">
+03244707180
+</a>
+
+</div>
+
+
+<div class="contactline">
+
+<small>EMAIL</small>
+
+<a href="mailto:sectorrr32@gmail.com">
+sectorrr32@gmail.com
+</a>
+
+</div>
+
+
+<div class="actions">
+
+<a class="btn primary"
+href="tel:+923287000988">
+CALL NOW
+</a>
+
+<a class="btn"
+target="_blank"
+href="https://wa.me/923287000988">
+WHATSAPP US
+</a>
+
+</div>
+
+</div>
+
+
+<div class="box">
+
+<div class="k">
+QUICK BOOKING
+</div>
+
+<h2 class="title">
+Ready to race?
+</h2>
+
+<p class="sub">
+Send a booking request and our team will contact you to confirm it.
+</p>
+
+<a class="btn primary" href="#book">
+BOOK NOW →
+</a>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section alt" id="book">
+
+<div class="wrap form">
+
+<div class="head">
+
+<div>
+
+<div class="k">
+BOOK NOW
+</div>
+
+<h2 class="title">
+Reserve your session
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="success" id="success">
+
+Thank you! Your booking request has been received.
+Our team will contact you to confirm your booking.
+
+</div>
+
+
+<form onsubmit="book(event)">
+
+<div class="fields">
+
+<div class="field">
+
+<label>Customer name</label>
+
+<input required
+name="name"
+placeholder="Your name">
+
+</div>
+
+
+<div class="field">
+
+<label>Phone number</label>
+
+<input required
+name="phone"
+type="tel"
+placeholder="03XXXXXXXXX">
+
+</div>
+
+
+<div class="field">
+
+<label>Number of persons</label>
+
+<input required
+name="persons"
+type="number"
+min="1">
+
+</div>
+
+
+<div class="field">
+
+<label>Number of children</label>
+
+<input name="children"
+type="number"
+min="0">
+
+</div>
+
+
+<div class="field">
+
+<label>Preferred date</label>
+
+<input required
+name="date"
+type="date">
+
+</div>
+
+
+<div class="field">
+
+<label>Preferred time</label>
+
+<input required
+name="time"
+type="time">
+
+</div>
+
+
+<div class="field full">
+
+<label>Activity/package</label>
+
+<select required name="activity">
+
+<option value="">
+Select
+</option>
+
+<option>
+Kids Basic
+</option>
+
+<option>
+Normal Racing
+</option>
+
+<option>
+Pro Racing
+</option>
+
+<option>
+RC Drag Race
+</option>
+
+<option>
+All-Day Pass
+</option>
+
+<option>
+Birthday / Private Event
+</option>
+
+<option>
+Group Challenge
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>How many sessions</label>
+
+<input required
+name="sessions"
+type="number"
+min="1"
+value="1">
+
+</div>
+
+
+<div class="field">
+
+<label>Special requests</label>
+
+<input name="requests"
+placeholder="Optional">
+
+</div>
+
+
+<div class="field full">
+
+<button
+class="btn primary"
+style="width:100%;border:0">
+
+SUBMIT BOOKING REQUEST →
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+</section>
+
+</main>
+
+
+<a class="wa"
+target="_blank"
+href="https://wa.me/923287000988?text=Hi%20SECTOR%2032%2C%20I%27d%20like%20to%20book.">
+
+WhatsApp Booking
+
+</a>
+
+
+<footer>
+
+<div class="wrap foot">
+
+<b>
+SECTOR 32 — RACE • BATTLE • PLAY
+</b>
+
+<span>
+© 2026 SECTOR 32 · Lahore
+</span>
+
+</div>
+
+</footer>
+
+
+<script>
+
+const m=document.getElementById('menu');
+
+function toggleMenu(){
+m.classList.toggle('open')
+}
+
+m.querySelectorAll('a').forEach(a=>
+a.onclick=()=>m.classList.remove('open')
+);
+
+function book(e){
+
+e.preventDefault();
+
+document
+.getElementById('success')
+.classList.add('show');
+
+e.target.reset();
+
+document
+.getElementById('success')
+.scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+}
+
+</script>
+
+</body>
+</html>
